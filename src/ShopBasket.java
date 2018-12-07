@@ -26,7 +26,6 @@ public class ShopBasket {
         for (Map.Entry<Product, Integer> p : basketCase.entrySet()) {
             System.out.println(p.getKey().getName() + "\t" + p.getKey().getPrice() + " pln\tQuantity: " + p.getValue());
         }
-        System.out.println("Total Cost: " + coutTotalCost() + " pln");
     }
 
     public double coutTotalCost() {
@@ -44,18 +43,24 @@ public class ShopBasket {
     }
 
     public void removeProduct(Product product, int quantity) {
-        if (quantity < 0) throw new IllegalArgumentException("Quantity cannot be negative!");
-        if (!doesProductExist(basketCase, product)) {
-            System.out.println("There's no product like that");
-        } else {
-            if (basketCase.get(product).intValue() < quantity) {
-                throw new IllegalArgumentException("Quantity cannot be greater than inside the basket!");
-            } else if (basketCase.get(product).intValue() > quantity) {
-                int decreasedQuantity = basketCase.get(product).intValue() - quantity;
-                basketCase.replace(product, decreasedQuantity);
+        if (!basketCase.isEmpty()) {
+            if (quantity < 0) throw new IllegalArgumentException("Quantity cannot be negative!");
+            if (!doesProductExist(basketCase, product)) {
+                System.out.println("There's no product like that");
             } else {
-                basketCase.remove(product,quantity);
+                if (basketCase.get(product).intValue() < quantity) {
+                    throw new IllegalArgumentException("Quantity cannot be greater than inside the basket!");
+                } else if (basketCase.get(product).intValue() > quantity) {
+                    int decreasedQuantity = basketCase.get(product).intValue() - quantity;
+                    basketCase.replace(product, decreasedQuantity);
+                } else {
+                    basketCase.remove(product, quantity);
+                }
             }
+        } else {
+            System.out.println("Your basket is empity!");
         }
     }
 }
+
+

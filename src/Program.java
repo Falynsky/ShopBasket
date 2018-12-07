@@ -20,12 +20,15 @@ public class Program {
         System.out.println("\nYour basket with the price:\n");
         myBasket.showBasketContentsWithAmount();
 
+        System.out.println("\nTotal cost: "+myBasket.coutTotalCost() + " pln");
+
         myBasket.removeProduct(apple,1);
         myBasket.removeProduct(milkCartonBox, 4);
 
         System.out.println("\nYour basket with the price after after removal some objects:\n");
         myBasket.showBasketContentsWithAmount();
 
+        System.out.println("\nTotal cost: "+myBasket.coutTotalCost() + " pln");
 
 
     }
