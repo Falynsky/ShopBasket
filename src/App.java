@@ -1,4 +1,4 @@
-public class Program {
+public class App {
 
     public static void main(String[] args) {
 
@@ -29,7 +29,5 @@ public class Program {
         myBasket.showBasketContentsWithAmount();
 
         System.out.println("\nTotal cost: "+myBasket.coutTotalCost() + " pln");
-
-
     }
 }

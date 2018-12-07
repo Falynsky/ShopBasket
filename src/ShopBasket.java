@@ -11,10 +11,11 @@ public class ShopBasket {
         if (!doesProductExist(basketCase, product)) {
             basketCase.put(product, quantity);
         } else {
-            int increasedQuantity = basketCase.get(product).intValue() + quantity;
+            int increasedQuantity = basketCase.get(product).intValue()+ quantity;
             basketCase.put(product, increasedQuantity);
         }
     }
+
 
     public boolean doesProductExist(Map<Product, Integer> basket, Product product) {
         if (basket.containsKey(product)) return true;
@@ -48,10 +49,10 @@ public class ShopBasket {
             if (!doesProductExist(basketCase, product)) {
                 System.out.println("There's no product like that");
             } else {
-                if (basketCase.get(product).intValue() < quantity) {
+                if (basketCase.get(product) < quantity) {
                     throw new IllegalArgumentException("Quantity cannot be greater than inside the basket!");
-                } else if (basketCase.get(product).intValue() > quantity) {
-                    int decreasedQuantity = basketCase.get(product).intValue() - quantity;
+                } else if (basketCase.get(product) > quantity) {
+                    int decreasedQuantity = basketCase.get(product) - quantity;
                     basketCase.replace(product, decreasedQuantity);
                 } else {
                     basketCase.remove(product, quantity);
