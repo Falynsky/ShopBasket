@@ -7,8 +7,7 @@ public class App {
         Product bread = new Product("Bread", 2.78);
 
         ShopBasket myBasket = new ShopBasket();
-
-        myBasket.addProduct(apple, 2);
+        myBasket.addProduct(apple, 2 );
         myBasket.addProduct(milkCartonBox, 2);
         myBasket.addProduct(milkCartonBox, 3);
         myBasket.addProduct(bread, 1);

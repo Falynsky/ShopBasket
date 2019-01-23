@@ -1,4 +1,3 @@
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,10 +15,18 @@ public class ShopBasket {
         }
     }
 
+    public void addProduct2(Product product, int quantity, Map<Product, Integer> basket) {
+        if (quantity < 0) throw new IllegalArgumentException("Quantity cannot be negative!");
+        if (!doesProductExist(basket, product)) {
+            basket.put(product, quantity);
+        } else {
+            int increasedQuantity = basket.get(product).intValue()+ quantity;
+            basket.put(product, increasedQuantity);
+        }
+    }
 
     public boolean doesProductExist(Map<Product, Integer> basket, Product product) {
-        if (basket.containsKey(product)) return true;
-        else return false;
+        return basket.containsKey(product);
     }
 
     public void showBasketContentsWithAmount() {
@@ -27,6 +34,10 @@ public class ShopBasket {
         for (Map.Entry<Product, Integer> p : basketCase.entrySet()) {
             System.out.println(p.getKey().getName() + "\t" + p.getKey().getPrice() + " pln\tQuantity: " + p.getValue());
         }
+    }
+
+    public Map<Product, Integer> getBasketCase(){
+        return basketCase;
     }
 
     public double coutTotalCost() {
