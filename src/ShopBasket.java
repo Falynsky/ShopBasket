@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class ShopBasket {
 
@@ -10,18 +11,8 @@ public class ShopBasket {
         if (!doesProductExist(basketCase, product)) {
             basketCase.put(product, quantity);
         } else {
-            int increasedQuantity = basketCase.get(product).intValue()+ quantity;
+            int increasedQuantity = basketCase.get(product).intValue() + quantity;
             basketCase.put(product, increasedQuantity);
-        }
-    }
-
-    public void addProduct2(Product product, int quantity, Map<Product, Integer> basket) {
-        if (quantity < 0) throw new IllegalArgumentException("Quantity cannot be negative!");
-        if (!doesProductExist(basket, product)) {
-            basket.put(product, quantity);
-        } else {
-            int increasedQuantity = basket.get(product).intValue()+ quantity;
-            basket.put(product, increasedQuantity);
         }
     }
 
@@ -36,8 +27,12 @@ public class ShopBasket {
         }
     }
 
-    public Map<Product, Integer> getBasketCase(){
+    public Map<Product, Integer> getBasketCase() {
         return basketCase;
+    }
+
+    public int getQuantityOf(Product product) {
+        return basketCase.get(product);
     }
 
     public double coutTotalCost() {
@@ -54,24 +49,21 @@ public class ShopBasket {
         }
     }
 
-    public void removeProduct(Product product, int quantity) {
-        if (!basketCase.isEmpty()) {
-            if (quantity < 0) throw new IllegalArgumentException("Quantity cannot be negative!");
-            if (!doesProductExist(basketCase, product)) {
-                System.out.println("There's no product like that");
-            } else {
-                if (basketCase.get(product) < quantity) {
-                    throw new IllegalArgumentException("Quantity cannot be greater than inside the basket!");
-                } else if (basketCase.get(product) > quantity) {
-                    int decreasedQuantity = basketCase.get(product) - quantity;
-                    basketCase.replace(product, decreasedQuantity);
-                } else {
-                    basketCase.remove(product, quantity);
-                }
-            }
+    public void removeProduct(Product product, int quantity) throws NoSuchElementException {
+        if (quantity < 0) throw new IllegalArgumentException("Quantity cannot be negative!");
+        if (!doesProductExist(basketCase, product)) {
+            System.out.println("There's no product like that");
         } else {
-            System.out.println("Your basket is empity!");
+            if (basketCase.get(product) < quantity) {
+                throw new IllegalArgumentException("Quantity cannot be greater than inside the basket!");
+            } else if (basketCase.get(product) > quantity) {
+                int decreasedQuantity = basketCase.get(product) - quantity;
+                basketCase.replace(product, decreasedQuantity);
+            } else {
+                basketCase.remove(product, quantity);
+            }
         }
+
     }
 }
 
