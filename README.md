@@ -6,3 +6,4 @@ The application was made as homework as part of a workshop entitled "„JAVA –
 
 Next goals:
   - JUnit tests
+  - Make a GUI
