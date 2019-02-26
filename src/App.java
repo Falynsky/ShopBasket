@@ -18,7 +18,6 @@ public class App {
             myBasket.addProduct(bread, 1);
             myBasket.addProduct(bread, 1);
 
-
             System.out.println("\nYour basket:");
             myBasket.showBasketContents();
 
