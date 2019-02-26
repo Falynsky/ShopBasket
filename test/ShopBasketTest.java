@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ShopBasketTest {
 
-    ShopBasket sb = new ShopBasket();
-    Product apple = new Product("Apple", 4.0);
-    Product tomatoe = new Product("Tomatoe", 3.2);
+    private ShopBasket sb = new ShopBasket();
+    private Product apple = new Product("Apple", 4.0);
+    private Product tomato = new Product("Tomatoe", 3.2);
 
     @Test
     void doesProductExist() {
@@ -24,8 +24,8 @@ class ShopBasketTest {
     @Test
     void totalCost() {
         sb.addProduct(apple, 2);
-        sb.addProduct(tomatoe, 6);
-        assertEquals(apple.getPrice() * sb.getBasketCase().get(apple) + tomatoe.getPrice() * sb.getBasketCase().get(tomatoe), sb.coutTotalCost());
+        sb.addProduct(tomato, 6);
+        assertEquals(apple.getPrice() * sb.getBasketCase().get(apple) + tomato.getPrice() * sb.getBasketCase().get(tomato), sb.coutTotalCost());
     }
 
 }

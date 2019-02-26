@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ProductTest {
 
-    Product apple;
+    private Product apple;
 
     @BeforeEach
     void startUp() {
